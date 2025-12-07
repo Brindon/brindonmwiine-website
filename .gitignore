@@ -1,0 +1,31 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Root level raw images (keep images/ folder)
+/6024f150-3f6c-460f-9068-0fce8efa5ed3.JPG
+/Bitcoin Kampala .jpg
+/Brindon Mwiine White logo.png
+/Coffee.32.36 2.jpg
+/IMG_7191.JPG
+/IMG_7556.JPG
+/Images-271.jpg
+/Images-438.jpg
+/Images-473.JPEG
+/Images-496.jpg
+/White - No Background.png
+/c8070fe4-be8d-46dd-9cef-007413aa4214.JPG
+/images/logo-icon.png
