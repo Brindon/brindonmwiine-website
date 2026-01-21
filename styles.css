@@ -632,15 +632,31 @@ section {
 }
 
 .blog-card-image {
-    height: 160px;
+    height: 180px;
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     padding: 16px;
+    position: relative;
+}
+
+.blog-card-image.has-image {
+    background-blend-mode: overlay;
+}
+
+.blog-card-image.has-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(247, 147, 26, 0.3) 0%, rgba(0, 100, 0, 0.4) 100%);
 }
 
 .blog-category {
+    position: relative;
+    z-index: 2;
     background-color: var(--white);
     color: var(--dark);
     padding: 6px 14px;
@@ -671,6 +687,28 @@ section {
     font-size: 0.85rem;
     color: var(--primary);
     font-weight: 600;
+}
+
+.blog-card-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.blog-card-link:hover {
+    transform: translateY(-8px);
+}
+
+/* ===== Article Styles ===== */
+.article-author {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gray-light);
+}
+
+.article-author p {
+    color: var(--dark);
+    line-height: 1.8;
 }
 
 /* ===== Book Section ===== */
@@ -833,103 +871,173 @@ section {
 }
 
 /* ===== Article Page ===== */
-.article-header {
-    padding: 160px 0 60px;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
-    color: var(--white);
-    text-align: center;
+/* ===== Premium Article Hero ===== */
+.article-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+}
+
+.article-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
+
+.article-hero .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.article-hero-content {
+    max-width: 720px;
 }
 
 .article-category {
     display: inline-block;
     background-color: var(--primary);
     color: var(--white);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin-bottom: 20px;
 }
 
-.article-header h1 {
-    margin-bottom: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+.article-hero h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .article-meta {
     display: flex;
-    justify-content: center;
-    gap: 24px;
-    opacity: 0.8;
-    font-size: 0.95rem;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
 }
 
+.article-author-name {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.article-meta-divider {
+    opacity: 0.5;
+}
+
+/* ===== Premium Article Content ===== */
 .article-content {
-    padding: 80px 0;
+    padding: 64px 0 80px;
     background-color: var(--white);
 }
 
 .article-body {
-    max-width: 720px;
+    max-width: 640px;
     margin: 0 auto;
 }
 
-.article-featured-image {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius);
-    margin-bottom: 40px;
-}
-
 .article-lead {
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     color: var(--dark);
-    font-weight: 500;
-    margin-bottom: 32px;
+    font-weight: 400;
+    margin-bottom: 2em;
     line-height: 1.7;
 }
 
 .article-body h2 {
-    margin-top: 48px;
-    margin-bottom: 20px;
+    font-size: 1.375rem;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
     color: var(--dark);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
 }
 
 .article-body p {
-    margin-bottom: 24px;
-    color: var(--gray);
+    font-size: 1.125rem;
+    margin-bottom: 1.5em;
+    color: #292929;
     line-height: 1.8;
 }
 
-.article-body blockquote {
-    border-left: 4px solid var(--primary);
-    padding-left: 24px;
-    margin: 32px 0;
-    font-style: italic;
+.article-body ul,
+.article-body ol {
     font-size: 1.125rem;
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+    color: #292929;
+    line-height: 1.8;
+}
+
+.article-body li {
+    margin-bottom: 0.5em;
+}
+
+.article-body strong {
     color: var(--dark);
+    font-weight: 600;
+}
+
+.article-body blockquote {
+    border-left: 3px solid var(--primary);
+    padding: 0.25em 0 0.25em 1.5em;
+    margin: 2em 0;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--dark);
+    line-height: 1.65;
+}
+
+/* ===== Article Author & Share ===== */
+.article-author {
+    margin-top: 3em;
+    padding-top: 2em;
+    border-top: 1px solid var(--gray-light);
+}
+
+.article-author p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
 }
 
 .article-share {
-    margin-top: 60px;
-    padding-top: 40px;
+    margin-top: 2.5em;
+    padding-top: 2em;
     border-top: 1px solid var(--gray-light);
     text-align: center;
 }
 
 .article-share p {
-    margin-bottom: 16px;
+    margin-bottom: 1em;
     color: var(--dark);
     font-weight: 600;
+    font-size: 0.95rem;
 }
 
 .share-links {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 12px;
 }
 
 .share-link {
@@ -1090,6 +1198,33 @@ section {
     .social-links {
         flex-direction: column;
         align-items: center;
+    }
+
+    /* Article responsive */
+    .article-hero {
+        min-height: 60vh;
+    }
+
+    .article-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .article-meta {
+        flex-wrap: wrap;
+    }
+
+    .article-body {
+        padding: 0 8px;
+    }
+
+    .article-lead {
+        font-size: 1.2rem;
+    }
+
+    .article-body p,
+    .article-body ul,
+    .article-body ol {
+        font-size: 1.05rem;
     }
 }
 
